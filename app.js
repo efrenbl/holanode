@@ -1,14 +1,12 @@
-var express = require('express');
-var app = express();
+'use strict';
+
+const http = require('http');
 
 const port = process.env.port || 3000;
 
-// respond with "hello world" when a GET request is made to the homepage
-app.get('/', function(req, res) {
-    res.status(200);
-
+const server = http.createServer(function(req, res) {
+    res.writeHead(200, { 'content-type': 'text/plain' });
+    res.end('Hola mundo');
 });
 
-app.listen(port, () => {
-    console.log("Wazzappp");
-});
+server.listen(port)
