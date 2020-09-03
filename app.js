@@ -1,12 +1,15 @@
 'use strict';
 
-const http = require('http');
+const express = require('express');
+const app = express();
 
 const port = process.env.port || 3000;
 
-const server = http.createServer(function(req, res) {
-    res.writeHead(200, { 'content-type': 'text/plain' });
-    res.end('Hola mundo');
+const server = app.listen(port, function() {
+    console.log(new Date().toISOString() + ": server started on port 3000");
 });
 
-server.listen(port)
+
+app.get('/', function(req, res) {
+    res.status(200).send('Express for courier is working on IISNode!');
+});
